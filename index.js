@@ -6,11 +6,6 @@ const Node = (value = null, nextNode = null) => {
     return {
         value, nextNode
     }
-    // const node = {
-    //     value,
-    //     nextNode
-    // }
-    // return node
 };
 
 const LinkedList = () => {
@@ -31,6 +26,17 @@ const LinkedList = () => {
         }
     }
 
+    const prepend = (value) => {
+        const node = Node(value)
+
+        if (head == null){
+            head = node;
+        } else {
+            node.nextNode = head
+            head = node
+        }
+    }
+
     const toString = () => {
         if (head == null){
             return "null"
@@ -46,21 +52,17 @@ const LinkedList = () => {
     }
     return {
         append,
+        prepend,
         toString
     }
 
 };
 
-// const list = LinkedList()
-// list.append(value = 1)
-// list.append(value=3)
-// console.log(list.toString())
-// list.append(value=9)
-// console.log(list.toString())
-
 const list = LinkedList();
 list.append(1);
 list.append(2);
 list.append(3);
+list.prepend(7);
+list.prepend(4)
 
 console.log(list.toString());
